@@ -23,10 +23,10 @@ lo que me gusta, lo que tiene salida laboral y lo que puedo pagar.
 Se realiza la primera entrega donde **permite clasificar si una especialización es recomendable o no, en función de variables como demanda, gusto del estudiante y costo**.
 En esta primera entrega se desarrolló un modelo básico de clasificación utilizando regresión logística. El modelo es entrenado con las features definidas (demanda, gusto y costos) y permite predecir si una especialización es recomendable o no para un nuevo estudiante.
 
-------
+----------------------------------------------------------------------------------------------------------
 
-
-🗂️ Plan de trabajo del proyecto
+**MODELO**
+🗂️ Plan de trabajo del proyecto 
 Este proyecto se desarrollará en 4 entregas progresivas, con el objetivo de evolucionar desde un modelo básico hasta un sistema de recomendación funcional basado en datos reales.
 
 
@@ -53,3 +53,27 @@ Permitir ingreso de datos por el usuario (Opcional)
 
 🎯 Resultado final del proyecto
 Se espera desarrollar un sistema de recomendación que sugiera especializaciones adecuadas para estudiantes de Ingeniería de Software, utilizando variables como intereses, demanda del mercado y costos, apoyado en datos reales y técnicas de inteligencia artificial.
+
+
+----------------------------------------------------------------------------------------------------------
+
+**API + FRONT**
+
+***Figma*** 
+https://www.figma.com/design/D4VWLDFSjG9H8GMs1fw1EG/Prototipo-de-Recomendador-de-Especializaci%C3%B3n?node-id=0-1&t=EhCiaJa7xZY6G6vV-1
+
+++++
+***Semana del 11 al 15 de mayo*** 
+Objetivo: Diseño y Frontend. 
+
+El trabajo consiste en crear el prototipo funcional en Figma, desarrollar la estructura de la aplicación en index.html con Tailwind CSS y programar la lógica de captura de datos en el formulario para que coincida con las variables del modelo.
+
+***Semana del 18 al 22 de mayo*** 
+Objetivo: Backend e Integración. 
+
+Las tareas incluyen la configuración del servidor en Flask, la implementación de la carga del modelo, el escalador y las columnas mediante joblib, y el desarrollo de las rutas en app.py para procesar los datos de entrada con pandas y generar las recomendaciones basadas en el archivo de especializaciones.
+
+***Semana del 25 de mayo***
+Objetivo: Entrega Final.
+
+Se llevarán a cabo las pruebas de integración para asegurar que el flujo de datos sea correcto, se realizará el pulido final de la interfaz de usuario, se completará la documentación técnica en el archivo README y se verificará que el archivo requirements.txt incluya todas las dependencias necesarias para la ejecución local.
