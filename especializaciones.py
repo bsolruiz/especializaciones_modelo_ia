@@ -1,0 +1,41 @@
+import pandas as pd
+
+especializaciones = [
+    ["Data Science", 9,8,9,8,1],
+    ["Machine Learning", 10,9,10,9,1],
+    ["Inteligencia Artificial", 10,9,10,9,1],
+    ["Big Data", 9,8,9,7,1],
+    ["Desarrollo Web", 6,4,6,4,1],
+    ["Backend", 8,6,8,6,1],
+    ["Frontend", 6,4,6,4,1],
+    ["Mobile", 7,5,7,6,1],
+    ["DevOps", 9,7,9,8,0],
+    ["Cloud Computing", 9,7,9,8,1],
+    ["Ciberseguridad", 9,7,9,8,1],
+    ["Pentesting", 8,7,9,8,1],
+    ["Redes", 6,5,6,5,0],
+    ["Arquitectura Software", 9,8,10,9,1],
+    ["Microservicios", 9,7,9,8,1],
+    ["QA Testing", 6,3,5,3,1],
+    ["Automatización QA", 7,4,6,4,1],
+    ["Gestión TI", 7,5,7,5,1],
+    ["Product Owner", 7,5,7,5,1],
+    ["Blockchain", 7,8,9,8,1],
+    ["IoT", 7,7,8,7,0],
+    ["Realidad Virtual", 6,7,8,7,1],
+    ["UX/UI", 8,5,7,4,1],
+    ["Soporte Técnico", 5,2,4,2,0],
+    ["Gamer Developer", 7,6,7,6,1],
+    ["Analista de Datos", 7,4,6,4,1],
+    ["Scrum Master", 6,4,7,3,1]
+]
+
+df_esp = pd.DataFrame(
+    especializaciones,
+    columns=["nombre","demanda","costo","salario","dificultad","modalidad"]
+)
+
+df_esp.to_csv("especializaciones.csv", index=False)
+
+print("CSV creado")
+print(df_esp.head())

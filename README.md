@@ -77,3 +77,20 @@ Las tareas incluyen la configuración del servidor en Flask, la implementación 
 Objetivo: Entrega Final.
 
 Se llevarán a cabo las pruebas de integración para asegurar que el flujo de datos sea correcto, se realizará el pulido final de la interfaz de usuario, se completará la documentación técnica en el archivo README y se verificará que el archivo requirements.txt incluya todas las dependencias necesarias para la ejecución local.
+
+
+## Instalación
+
+# Recomendador
+
+Sistema recomendador de especializaciones TI usando Flask + Machine Learning.
+
+## Instalación
+
+pip install -r requirements.txt
+
+## Ejecutar
+
+py specializaciones.py
+py modelo.py  
+python app.py 
