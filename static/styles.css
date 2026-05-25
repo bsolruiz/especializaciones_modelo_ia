@@ -1,0 +1,99 @@
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+}
+
+.bubbly-input {
+  border: 2px solid #c2c9b5;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.bubbly-input:focus {
+  outline: none;
+  border-color: #3c6a00;
+  box-shadow: 0 0 0 4px rgba(60, 106, 0, 0.15);
+}
+
+select.bubbly-input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath fill='%23737a68' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 44px;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.squish-btn {
+  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out, filter 0.15s;
+  box-shadow: 0 4px 0 #2c5000;
+}
+
+.squish-btn:active {
+  transform: translateY(2px) scale(0.98);
+  box-shadow: 0 2px 0 #2c5000;
+}
+
+.squish-btn:hover {
+  filter: brightness(1.08);
+}
+
+.squish-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  filter: none;
+}
+
+.forest-bg {
+  background-image:
+    linear-gradient(rgba(245, 252, 237, 0.85), rgba(245, 252, 237, 0.85)),
+    url(https://lh3.googleusercontent.com/aida-public/AB6AXuBeZAJ4agxEC8m3HdOue4YteEpOLcJZDxzTSoZlKw0_7nNe-8BG-4nxa5s34kQFhL-B45k0J3WO-wDSt930LXk3OvZ4OnqJje7V6GmsFsk_3ZHwr4FvjB8EdseoWEzfES2FiekilqQDeuU3LV3zVtF5cC4Vr-n6t6H7TKSNJaDkXUusdJsPHFcp4ugPWjz_LGdl6vjnj0RMugbDh2AwdIdNDwadOozydcH098zrBKEt4tx-XyfyfuoyX5weOFXB_v7KN3ggbPbyNGU4);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-card {
+  animation: slideIn 0.4s ease forwards;
+  opacity: 0;
+}
+
+.result-card:nth-child(1) { animation-delay: 0.05s; }
+.result-card:nth-child(2) { animation-delay: 0.18s; }
+.result-card:nth-child(3) { animation-delay: 0.31s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+.float-anim {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  animation: spin 0.8s linear infinite;
+}
+
+.modal-label {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.modal-label:hover {
+  transform: scale(1.02);
+}

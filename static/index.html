@@ -4,13 +4,14 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Recomendador de Especializac</title>
+  <title>Recomendador de Especialidad</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link
     href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Lexend:wght@300;400;500;600;700&display=swap"
     rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
     rel="stylesheet" />
+
   <script id="tailwind-config">
     tailwind.config = {
       darkMode: "class",
@@ -41,317 +42,169 @@
             "secondary-fixed": "#ffdbd0", "on-secondary-fixed": "#3a0b00",
             "on-background": "#171d14"
           },
-          borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
-          spacing: { "margin": "32px", "unit": "8px", "container-max": "1140px", "gutter": "24px" },
+          borderRadius: { "DEFAULT": "0.75rem", "lg": "1.25rem", "xl": "2rem", "full": "9999px" },
+          spacing: { "margin": "20px", "unit": "6px", "container-max": "1140px", "gutter": "16px" },
           fontFamily: {
             "headline-lg": ["Quicksand"], "label-sm": ["Lexend"],
             "body-md": ["Lexend"], "headline-md": ["Quicksand"], "body-lg": ["Lexend"]
           },
           fontSize: {
-            "headline-lg": ["48px", { "lineHeight": "1.2", "fontWeight": "700" }],
-            "label-sm": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
-            "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
-            "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
-            "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+            "headline-lg": ["36px", { "lineHeight": "1.2", "fontWeight": "700" }],
+            "label-sm": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "body-lg": ["15px", { "lineHeight": "1.6", "fontWeight": "400" }]
           }
         }
       }
     }
   </script>
-  <style>
-    .material-symbols-outlined {
-      font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
-    }
 
-    .bubbly-input {
-      border: 2px solid #c2c9b5;
-      transition: all 0.2s ease-in-out;
-      cursor: pointer;
-    }
-
-    .bubbly-input:focus {
-      outline: none;
-      border-color: #3c6a00;
-      box-shadow: 0 0 0 4px rgba(60, 106, 0, 0.15);
-    }
-
-    select.bubbly-input {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath fill='%23737a68' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 14px center;
-      padding-right: 44px;
-      appearance: none;
-      -webkit-appearance: none;
-    }
-
-    .squish-btn {
-      transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out, filter 0.15s;
-      box-shadow: 0 4px 0 #2c5000;
-    }
-
-    .squish-btn:active {
-      transform: translateY(2px) scale(0.98);
-      box-shadow: 0 2px 0 #2c5000;
-    }
-
-    .squish-btn:hover {
-      filter: brightness(1.08);
-    }
-
-    .squish-btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      filter: none;
-    }
-
-    .forest-bg {
-      background-image:
-        linear-gradient(rgba(245, 252, 237, 0.85), rgba(245, 252, 237, 0.85)),
-        url(https://lh3.googleusercontent.com/aida-public/AB6AXuBeZAJ4agxEC8m3HdOue4YteEpOLcJZDxzTSoZlKw0_7nNe-8BG-4nxa5s34kQFhL-B45k0J3WO-wDSt930LXk3OvZ4OnqJje7V6GmsFsk_3ZHwr4FvjB8EdseoWEzfES2FiekilqQDeuU3LV3zVtF5cC4Vr-n6t6H7TKSNJaDkXUusdJsPHFcp4ugPWjz_LGdl6vjnj0RMugbDh2AwdIdNDwadOozydcH098zrBKEt4tx-XyfyfuoyX5weOFXB_v7KN3ggbPbyNGU4);
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-    }
-
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .result-card {
-      animation: slideIn 0.4s ease forwards;
-      opacity: 0;
-    }
-
-    .result-card:nth-child(1) {
-      animation-delay: 0.05s;
-    }
-
-    .result-card:nth-child(2) {
-      animation-delay: 0.18s;
-    }
-
-    .result-card:nth-child(3) {
-      animation-delay: 0.31s;
-    }
-
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-8px);
-      }
-    }
-
-    .float-anim {
-      animation: float 3s ease-in-out infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .spinner {
-      animation: spin 0.8s linear infinite;
-    }
-
-    .modal-label {
-      transition: all 0.2s ease;
-      cursor: pointer;
-    }
-
-    .modal-label:hover {
-      transform: scale(1.02);
-    }
-  </style>
+  <link rel="stylesheet" href="/static/styles.css" />
 </head>
 
 <body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
   <main class="min-h-screen forest-bg">
 
     <!-- HEADER -->
-    <header class="flex justify-between items-center w-full px-8 py-5">
-      <div class="flex items-center gap-3">
-        <span class="text-2xl">🌲</span>
-        <h2 class="text-primary font-bold" style="font-family:Quicksand;font-size:26px;font-weight:700;">
+    <header class="flex justify-between items-center w-full px-5 py-3">
+      <div class="flex items-center gap-2">
+        <span class="text-xl">🌲</span>
+        <h2 class="text-primary font-bold" style="font-family:Quicksand;font-size:20px;font-weight:700;">
           Recomendador de Especialidad
         </h2>
       </div>
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2">
         <div id="badge-modelo"
-          class="hidden items-center gap-2 bg-primary/10 text-primary text-xs font-bold px-3 py-1.5 rounded-full border border-primary/20">
-          <span class="w-2 h-2 bg-primary rounded-full inline-block"></span>
+          class="hidden items-center gap-1.5 bg-primary/10 text-primary text-xs font-bold px-2.5 py-1 rounded-full border border-primary/20">
+          <span class="w-1.5 h-1.5 bg-primary rounded-full inline-block"></span>
           <span id="badge-texto">Modelo activo</span>
         </div>
-        <span class="text-xs font-label-sm text-on-surface-variant bg-surface-container px-3 py-1 rounded-full">Growth
+        <span class="text-xs font-label-sm text-on-surface-variant bg-surface-container px-2.5 py-1 rounded-full">Growth
           Forest</span>
       </div>
     </header>
 
     <!-- GRID -->
-    <div class="px-8 pb-10 grid grid-cols-12 gap-gutter max-w-7xl mx-auto">
+    <div class="px-5 pb-6 grid grid-cols-12 gap-4 max-w-6xl mx-auto">
 
       <!-- ===== FORMULARIO ===== -->
       <div class="col-span-12 lg:col-span-5">
         <div
           class="bg-surface-container-lowest p-8 rounded-lg shadow-sm border-2 border-surface-container relative overflow-hidden">
           <div
-            class="absolute -right-12 -top-12 w-48 h-48 bg-primary-fixed/20 rounded-full blur-3xl pointer-events-none">
+            class="absolute -right-10 -top-10 w-36 h-36 bg-primary-fixed/20 rounded-full blur-3xl pointer-events-none">
           </div>
 
-          <header class="mb-7 relative z-10">
-            <h3 class="text-on-surface mb-2" style="font-family:Quicksand;font-size:32px;font-weight:600;">
+          <header class="mb-4 relative z-10">
+            <h3 class="text-on-surface mb-1" style="font-family:Quicksand;font-size:22px;font-weight:600;">
               Encuentra tu camino
             </h3>
-            <p class="text-on-surface-variant text-sm leading-relaxed">
-              Configura tus preferencias para descubrir tu especialidad ideal en el bosque del software.
+            <p class="text-on-surface-variant leading-relaxed" style="font-size:12px;">
+              Configura tus preferencias para descubrir tu especialidad ideal.
             </p>
           </header>
 
-          <div class="space-y-5 relative z-10">
+          <!-- Botón ayuda -->
+          <button onclick="abrirModalBienvenida()" class="absolute top-0 right-0 w-11 h-11 rounded-full
+       bg-surface-container hover:bg-primary hover:text-on-primary
+       border-2 border-surface-container-high
+       flex items-center justify-center
+       transition-all duration-200 hover:scale-105 shadow-sm">
+
+            <span class="material-symbols-outlined" style='font-size:20px;font-variation-settings:"FILL" 1;'>
+              help
+            </span>
+
+          </button>
+
+          <div class="space-y-3 relative z-10">
 
             <!-- Demanda -->
-            <div class="mb-6">
-              <div class="flex justify-between items-center mb-2 ml-1">
+            <div>
+              <div class="flex justify-between items-center mb-1 ml-0.5">
                 <label class="text-primary font-bold tracking-wide uppercase"
-                  style="font-family:Lexend; font-size:12px; letter-spacing:0.08em;">
-                  Nivel de Demanda
-                </label>
-                <span class="text-primary font-bold bg-primary-container/20 px-2 py-0.5 rounded-full text-xs"
-                  id="demanda-val">5</span>
+                  style="font-family:Lexend;font-size:11px;letter-spacing:0.08em;">Nivel de Demanda</label>
+                <span class="text-primary font-bold bg-primary-container/20 px-2 py-0.5 rounded-full"
+                  style="font-size:11px;" id="demanda-val">5</span>
               </div>
               <input type="range" id="sel-demanda" min="0" max="10" value="5" step="1"
-                class="w-full h-2 bg-surface-bright rounded-lg appearance-none cursor-pointer accent-primary"
+                class="w-full h-1.5 bg-surface-bright rounded-lg appearance-none cursor-pointer accent-primary"
                 oninput="document.getElementById('demanda-val').innerText = this.value">
             </div>
 
             <!-- Costo -->
-            <div class="mb-6">
-              <div class="flex justify-between items-center mb-2 ml-1">
+            <div>
+              <div class="flex justify-between items-center mb-1 ml-0.5">
                 <label class="text-primary font-bold tracking-wide uppercase"
-                  style="font-family:Lexend; font-size:12px; letter-spacing:0.08em;">
-                  Costo de Formación
-                </label>
-                <span class="text-primary font-bold bg-primary-container/20 px-2 py-0.5 rounded-full text-xs"
-                  id="costo-val">5</span>
+                  style="font-family:Lexend;font-size:11px;letter-spacing:0.08em;">Costo de Formación</label>
+                <span class="text-primary font-bold bg-primary-container/20 px-2 py-0.5 rounded-full"
+                  style="font-size:11px;" id="costo-val">5</span>
               </div>
               <input type="range" id="sel-costo" min="0" max="10" value="5" step="1"
-                class="w-full h-2 bg-surface-bright rounded-lg appearance-none cursor-pointer accent-primary"
+                class="w-full h-1.5 bg-surface-bright rounded-lg appearance-none cursor-pointer accent-primary"
                 oninput="document.getElementById('costo-val').innerText = this.value">
             </div>
 
             <!-- Salario -->
-            <div class="mb-6">
-              <div class="flex justify-between items-center mb-2 ml-1">
+            <div>
+              <div class="flex justify-between items-center mb-1 ml-0.5">
                 <label class="text-primary font-bold tracking-wide uppercase"
-                  style="font-family:Lexend; font-size:12px; letter-spacing:0.08em;">
-                  Expectativa de Salario
-                </label>
-                <span class="text-primary font-bold bg-primary-container/20 px-2 py-0.5 rounded-full text-xs"
-                  id="salario-val">5</span>
+                  style="font-family:Lexend;font-size:11px;letter-spacing:0.08em;">Expectativa de Salario</label>
+                <span class="text-primary font-bold bg-primary-container/20 px-2 py-0.5 rounded-full"
+                  style="font-size:11px;" id="salario-val">5</span>
               </div>
               <input type="range" id="sel-salario" min="0" max="10" value="5" step="1"
-                class="w-full h-2 bg-surface-bright rounded-lg appearance-none cursor-pointer accent-primary"
+                class="w-full h-1.5 bg-surface-bright rounded-lg appearance-none cursor-pointer accent-primary"
                 oninput="document.getElementById('salario-val').innerText = this.value">
             </div>
 
             <!-- Dificultad -->
-            <div class="mb-6">
-              <div class="flex justify-between items-center mb-2 ml-1">
+            <div>
+              <div class="flex justify-between items-center mb-1 ml-0.5">
                 <label class="text-primary font-bold tracking-wide uppercase"
-                  style="font-family:Lexend; font-size:12px; letter-spacing:0.08em;">
-                  Dificultad Académica
-                </label>
-                <span class="text-primary font-bold bg-primary-container/20 px-2 py-0.5 rounded-full text-xs"
-                  id="dificultad-val">5</span>
+                  style="font-family:Lexend;font-size:11px;letter-spacing:0.08em;">Dificultad Académica</label>
+                <span class="text-primary font-bold bg-primary-container/20 px-2 py-0.5 rounded-full"
+                  style="font-size:11px;" id="dificultad-val">5</span>
               </div>
               <input type="range" id="sel-dificultad" min="0" max="10" value="5" step="1"
-                class="w-full h-2 bg-surface-bright rounded-lg appearance-none cursor-pointer accent-primary"
+                class="w-full h-1.5 bg-surface-bright rounded-lg appearance-none cursor-pointer accent-primary"
                 oninput="document.getElementById('dificultad-val').innerText = this.value">
             </div>
+
             <!-- Modalidad -->
             <div>
-              <label class="block text-primary font-bold mb-2 ml-1 tracking-wide uppercase"
-                style="font-family:Lexend;font-size:12px;letter-spacing:0.08em;">
-                Modalidad
-              </label>
-              <div class="grid grid-cols-2 gap-3">
-                <!-- Opción Virtual -->
+              <label class="block text-primary font-bold mb-1.5 ml-0.5 tracking-wide uppercase"
+                style="font-family:Lexend;font-size:11px;letter-spacing:0.08em;">Modalidad</label>
+              <div class="grid grid-cols-2 gap-2">
                 <label id="lbl-virtual" onclick="selectModality('virtual')"
-                  class="modal-label cursor-pointer flex items-center justify-center gap-2 h-12 border-2 border-primary bg-primary-container/20 rounded-full font-bold text-on-surface transition-all"
-                  style="font-family:Lexend; font-size:12px; letter-spacing:0.08em;">
+                  class="modal-label cursor-pointer flex items-center justify-center gap-1.5 h-9 border-2 border-primary bg-primary-container/20 rounded-full font-bold text-on-surface transition-all"
+                  style="font-family:Lexend;font-size:11px;letter-spacing:0.08em;">
                   <input id="radio-virtual" name="modality" type="radio" value="0" class="hidden" checked />
-                  <span class="material-symbols-outlined text-lg">computer</span>
+                  <span class="material-symbols-outlined" style="font-size:16px;">computer</span>
                   Virtual
                 </label>
-
-                <!-- Opción Presencial -->
                 <label id="lbl-presencial" onclick="selectModality('presencial')"
-                  class="modal-label cursor-pointer flex items-center justify-center gap-2 h-12 border-2 border-primary bg-primary-container/20 rounded-full font-bold text-on-surface transition-all"
-                  style="font-family:Lexend; font-size:12px; letter-spacing:0.08em;">
+                  class="modal-label cursor-pointer flex items-center justify-center gap-1.5 h-9 border-2 border-primary bg-primary-container/20 rounded-full font-bold text-on-surface transition-all"
+                  style="font-family:Lexend;font-size:11px;letter-spacing:0.08em;">
                   <input id="radio-presencial" name="modality" type="radio" value="1" class="hidden" />
-                  <span class="material-symbols-outlined text-lg">groups</span>
+                  <span class="material-symbols-outlined" style="font-size:16px;">groups</span>
                   Presencial
                 </label>
               </div>
             </div>
 
-            <script>
-              function selectModality(type) {
-                const lblVirtual = document.getElementById('lbl-virtual');
-                const lblPresencial = document.getElementById('lbl-presencial');
-                const radioVirtual = document.getElementById('radio-virtual');
-                const radioPresencial = document.getElementById('radio-presencial');
-
-                if (type === 'virtual') {
-                  // Activar Virtual
-                  radioVirtual.checked = true;
-                  lblVirtual.classList.replace('border-outline-variant', 'border-primary');
-                  lblVirtual.classList.add('bg-primary-container/20', 'text-on-surface');
-                  lblVirtual.classList.remove('text-on-surface-variant');
-
-                  // Desactivar Presencial
-                  lblPresencial.classList.replace('border-primary', 'border-outline-variant');
-                  lblPresencial.classList.remove('bg-primary-container/20', 'text-on-surface');
-                  lblPresencial.classList.add('text-on-surface-variant');
-                } else {
-                  // Activar Presencial
-                  radioPresencial.checked = true;
-                  lblPresencial.classList.replace('border-outline-variant', 'border-primary');
-                  lblPresencial.classList.add('bg-primary-container/20', 'text-on-surface');
-                  lblPresencial.classList.remove('text-on-surface-variant');
-
-                  // Desactivar Virtual
-                  lblVirtual.classList.replace('border-primary', 'border-outline-variant');
-                  lblVirtual.classList.remove('bg-primary-container/20', 'text-on-surface');
-                  lblVirtual.classList.add('text-on-surface-variant');
-                }
-              }
-            </script>
-
             <!-- Botón -->
-            <button id="btn-ejecutar" onclick="ejecutarModelo()" class="w-full bg-primary text-on-primary h-12 rounded-full squish-btn
-                   flex items-center justify-center gap-3 mt-3"
-              style="font-family:Quicksand;font-size:14px;font-weight:500;">
-              <span class="material-symbols-outlined" style='font-variation-settings:"FILL" 1;'>auto_awesome</span>
+            <button id="btn-ejecutar" onclick="ejecutarModelo()"
+              class="w-full bg-primary text-on-primary h-9 rounded-full squish-btn flex items-center justify-center gap-2 mt-1"
+              style="font-family:Quicksand;font-size:13px;font-weight:500;">
+              <span class="material-symbols-outlined"
+                style='font-size:18px;font-variation-settings:"FILL" 1;'>auto_awesome</span>
               Ejecutar Modelo
             </button>
 
             <!-- Error validación -->
-            <div id="form-error" class="hidden text-error text-sm text-center font-label-sm">
+            <div id="form-error" class="hidden text-error text-center font-label-sm" style="font-size:11px;">
               ⚠️ Completa todos los campos antes de continuar.
             </div>
           </div>
@@ -361,54 +214,57 @@
       <!-- ===== RESULTADOS ===== -->
       <div class="col-span-12 lg:col-span-7">
         <div
-          class="bg-surface-container-high/40 backdrop-blur-md p-8 rounded-lg shadow-sm border-2 border-white/50 min-h-full">
+          class="bg-surface-container-high/40 backdrop-blur-md p-5 rounded-lg shadow-sm border-2 border-white/50 min-h-full">
 
-          <div class="flex justify-between items-end mb-8">
+          <div class="flex justify-between items-end mb-4">
             <div>
-              <h3 class="text-on-surface" style="font-family:Quicksand;font-size:32px;font-weight:600;">
+              <h3 class="text-on-surface" style="font-family:Quicksand;font-size:22px;font-weight:600;">
                 Ranking de Resultados
               </h3>
-              <p class="text-on-surface-variant text-sm">Tu perfil florece mejor en estas especialidades</p>
+              <p class="text-on-surface-variant" style="font-size:12px;">Tu perfil florece mejor en estas especialidades
+              </p>
             </div>
           </div>
 
           <!-- Estado vacío -->
-          <div id="estado-vacio" class="flex flex-col items-center justify-center py-16 text-center">
-            <div class="float-anim text-6xl mb-4">🌱</div>
-            <p class="font-bold text-on-surface text-xl mb-2" style="font-family:Quicksand;">
+          <div id="estado-vacio" class="flex flex-col items-center justify-center py-10 text-center">
+            <div class="float-anim text-5xl mb-3">🌱</div>
+            <p class="font-bold text-on-surface mb-1" style="font-family:Quicksand;font-size:17px;">
               Selecciona tus preferencias
             </p>
-            <p class="text-on-surface-variant text-sm max-w-xs">
+            <p class="text-on-surface-variant max-w-xs" style="font-size:12px;">
               Completa el formulario y pulsa <strong>Ejecutar Modelo</strong> para descubrir tu especialidad ideal.
             </p>
           </div>
 
           <!-- Estado cargando -->
-          <div id="estado-cargando" class="hidden flex-col items-center justify-center py-16 gap-4">
-            <div class="w-12 h-12 rounded-full border-4 border-primary border-t-transparent spinner"></div>
-            <p class="text-on-surface-variant text-sm font-label-sm">Consultando el modelo…</p>
+          <div id="estado-cargando" class="hidden flex-col items-center justify-center py-10 gap-3">
+            <div class="w-10 h-10 rounded-full border-4 border-primary border-t-transparent spinner"></div>
+            <p class="text-on-surface-variant font-label-sm" style="font-size:12px;">Consultando el modelo…</p>
           </div>
 
           <!-- Estado resultados -->
-          <div id="estado-resultados" class="hidden space-y-6">
-            <div id="cards-container" class="space-y-5"></div>
+          <div id="estado-resultados" class="hidden space-y-3">
+            <div id="cards-container" class="space-y-3"></div>
             <div
-              class="p-6 bg-tertiary-container/10 border-2 border-dashed border-tertiary/30 rounded-lg flex items-start gap-5">
+              class="p-4 bg-tertiary-container/10 border-2 border-dashed border-tertiary/30 rounded-lg flex items-start gap-3">
               <div
-                class="w-12 h-12 bg-tertiary rounded-full flex items-center justify-center text-on-tertiary shrink-0 mt-0.5">
-                <span class="material-symbols-outlined" style='font-variation-settings:"FILL" 1;'>lightbulb</span>
+                class="w-9 h-9 bg-tertiary rounded-full flex items-center justify-center text-on-tertiary shrink-0 mt-0.5">
+                <span class="material-symbols-outlined"
+                  style='font-size:18px;font-variation-settings:"FILL" 1;'>lightbulb</span>
               </div>
               <div>
-                <p id="consejo-texto" class="text-on-surface-variant text-sm leading-relaxed"></p>
+                <p id="consejo-texto" class="text-on-surface-variant leading-relaxed" style="font-size:12px;"></p>
               </div>
             </div>
           </div>
 
           <!-- Estado error API -->
-          <div id="estado-api-error" class="hidden flex-col items-center justify-center py-12 text-center gap-3">
+          <div id="estado-api-error" class="hidden flex-col items-center justify-center py-10 text-center gap-2">
             <span class="text-4xl">🔌</span>
-            <p class="font-bold text-on-surface" style="font-family:Quicksand;">No se pudo conectar con el servidor</p>
-            <p class="text-on-surface-variant text-sm">
+            <p class="font-bold text-on-surface" style="font-family:Quicksand;font-size:16px;">No se pudo conectar con
+              el servidor</p>
+            <p class="text-on-surface-variant" style="font-size:12px;">
               Asegúrate de que <code class="bg-surface-container px-1 rounded">python app.py</code> esté corriendo.
             </p>
           </div>
@@ -419,477 +275,341 @@
     </div>
   </main>
 
-  <script>
-    
+  <!-- ─────────────────────────────
+     MODAL BIENVENIDA GUIADA
+───────────────────────────── -->
+  <div id="welcome-modal"
+    class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center px-5 opacity-0 pointer-events-none transition-all duration-300">
 
-    const META = {
-      "Data Science": {
-        avatarBg: "#DFF4FF",
-        emoji: "📊",
-        img: "/static/imges_recom/data.png",
-        tags: [
-          { label: "Datos", bg: "rgba(80,180,255,.2)", color: "#0066aa" },
-          { label: "Analítica", bg: "rgba(0,200,160,.2)", color: "#006b57" }
-        ],
-        consejo: "Te destacas interpretando información y encontrando patrones. Data Science puede darte un perfil muy versátil y estratégico."
-      },
+    <div id="welcome-card"
+      class="bg-surface-container-lowest border-2 border-surface-container rounded-[2rem] max-w-lg w-full p-6 relative shadow-2xl scale-95 transition-all duration-300 overflow-hidden">
 
-      "Machine Learning": {
-        avatarBg: "#ECE4FF",
-        emoji: "🧠",
-        img: "/static/imges_recom/machine.png",
-        tags: [
-          { label: "IA", bg: "rgba(120,90,255,.2)", color: "#5c36d6" },
-          { label: "Alta Demanda", bg: "rgba(0,180,120,.2)", color: "#007a52" }
-        ],
-        consejo: "Tu perfil encaja con áreas de automatización inteligente y modelos predictivos. Machine Learning combina lógica, matemáticas e innovación."
-      },
+      <!-- Glow -->
+      <div class="absolute -top-16 -right-16 w-40 h-40 bg-primary-fixed/20 rounded-full blur-3xl pointer-events-none">
+      </div>
 
-      "Inteligencia Artificial": {
-        avatarBg: "#E4F1FF",
-        emoji: "🤖",
-        img: "/static/imges_recom/ia.png",
-        tags: [
-          { label: "Futuro Tech", bg: "rgba(70,150,255,.2)", color: "#0050b8" },
-          { label: "Innovación", bg: "rgba(255,170,0,.2)", color: "#9c6400" }
-        ],
-        consejo: "Tienes afinidad por tecnologías avanzadas y resolución de problemas complejos. IA es un campo con gran crecimiento y proyección."
-      },
+      <!-- HEADER -->
+      <div class="relative z-10 flex items-start justify-between gap-4 mb-5">
 
-      "Big Data": {
-        avatarBg: "#FFF3D8",
-        emoji: "🗄️",
-        img: "/static/imges_recom/big.png",
-        tags: [
-          { label: "Escalabilidad", bg: "rgba(255,170,0,.2)", color: "#9a5c00" },
-          { label: "Datos", bg: "rgba(70,170,255,.2)", color: "#005d9b" }
-        ],
-        consejo: "Tu interés por sistemas robustos y manejo masivo de información hace que Big Data sea una excelente opción."
-      },
-
-      "Desarrollo Web": {
-        avatarBg: "#EAFBFF",
-        emoji: "🌐",
-        img: "/static/imges_recom/web.png",
-        tags: [
-          { label: "Creatividad", bg: "rgba(0,180,255,.2)", color: "#006e9e" },
-          { label: "Alta Salida", bg: "rgba(0,200,100,.2)", color: "#00703c" }
-        ],
-        consejo: "Combinas lógica y diseño visual de forma equilibrada. Desarrollo Web permite crear productos completos y visibles rápidamente."
-      },
-
-      "Backend": {
-        avatarBg: "#EEF4FF",
-        emoji: "🖥️",
-        img: "/static/imges_recom/back.png",
-        tags: [
-          { label: "Lógica", bg: "rgba(80,120,255,.2)", color: "#2748a5" },
-          { label: "APIs", bg: "rgba(0,180,255,.2)", color: "#006e9e" }
-        ],
-        consejo: "Tu perfil apunta a construir sistemas sólidos y escalables. Backend es ideal si disfrutas la arquitectura y la lógica profunda."
-      },
-
-      "Frontend": {
-        avatarBg: "#FFF1E8",
-        emoji: "🎨",
-        img: "/static/imges_recom/front.png",
-        tags: [
-          { label: "UI", bg: "rgba(255,140,0,.2)", color: "#9a4d00" },
-          { label: "Experiencia", bg: "rgba(255,90,120,.2)", color: "#a02845" }
-        ],
-        consejo: "Tienes afinidad por la experiencia visual y la interacción. Frontend mezcla diseño, creatividad y tecnología."
-      },
-
-      "Mobile": {
-        avatarBg: "#EEFDF7",
-        emoji: "📱",
-        img: "/static/imges_recom/mobile.png",
-        tags: [
-          { label: "Apps", bg: "rgba(0,210,150,.2)", color: "#007257" },
-          { label: "Versátil", bg: "rgba(70,150,255,.2)", color: "#005eb5" }
-        ],
-        consejo: "Tu interés por soluciones prácticas y modernas encaja muy bien con el desarrollo de aplicaciones móviles."
-      },
-
-      "DevOps": {
-        avatarBg: "#F4F7FF",
-        emoji: "♾️",
-        img: "/static/imges_recom/devp.png",
-        tags: [
-          { label: "Automatización", bg: "rgba(120,120,255,.2)", color: "#4f4fc7" },
-          { label: "Infraestructura", bg: "rgba(0,180,120,.2)", color: "#00734b" }
-        ],
-        consejo: "Te adaptas bien a entornos técnicos y organizados. DevOps conecta desarrollo, automatización y despliegue continuo."
-      },
-
-      "Cloud Computing": {
-        avatarBg: "#EDF9FF",
-        emoji: "☁️",
-        img: "/static/imges_recom/cloud.png",
-        tags: [
-          { label: "Escalable", bg: "rgba(0,170,255,.2)", color: "#005d9e" },
-          { label: "Infraestructura", bg: "rgba(0,200,120,.2)", color: "#006b3f" }
-        ],
-        consejo: "Tu perfil encaja con tecnologías modernas y servicios distribuidos. Cloud Computing es clave en empresas actuales."
-      },
-
-      "Ciberseguridad": {
-        avatarBg: "#EEFDF3",
-        emoji: "🛡️",
-        img: "/static/imges_recom/ciber.png",
-        tags: [
-          { label: "Seguridad", bg: "rgba(0,170,120,.2)", color: "#005d47" },
-          { label: "Alta Demanda", bg: "rgba(255,120,0,.2)", color: "#974d00" }
-        ],
-        consejo: "Tienes una mentalidad analítica y preventiva. Ciberseguridad protege sistemas críticos y tiene gran proyección laboral."
-      },
-
-      "Pentesting": {
-        avatarBg: "#FFF4EA",
-        emoji: "🔎",
-        img: "/static/imges_recom/pen.png",
-        tags: [
-          { label: "Hacking Ético", bg: "rgba(255,120,0,.2)", color: "#944d00" },
-          { label: "Investigación", bg: "rgba(120,80,255,.2)", color: "#5c35cf" }
-        ],
-        consejo: "Disfrutas resolver problemas y detectar vulnerabilidades. Pentesting combina análisis técnico y pensamiento estratégico."
-      },
-
-      "Redes": {
-        avatarBg: "#EEF8FF",
-        emoji: "🔗",
-        img: "/static/imges_recom/net.png",
-        tags: [
-          { label: "Conectividad", bg: "rgba(70,170,255,.2)", color: "#005c96" },
-          { label: "Infraestructura", bg: "rgba(0,180,120,.2)", color: "#006e47" }
-        ],
-        consejo: "Tu perfil se adapta a estructuras técnicas y conectividad. Redes es fundamental para cualquier ecosistema tecnológico."
-      },
-
-      "Arquitectura Software": {
-        avatarBg: "#EEF3FF",
-        emoji: "🏗️",
-        img: "/static/imges_recom/arquitectura.png",
-        tags: [
-          { label: "Arquitectura", bg: "rgba(90,120,255,.2)", color: "#3148a8" },
-          { label: "Senior", bg: "rgba(255,170,0,.2)", color: "#9b6500" }
-        ],
-        consejo: "Tienes capacidad para visualizar sistemas completos y estructurados. Arquitectura de Software requiere visión estratégica."
-      },
-
-      "Microservicios": {
-        avatarBg: "#F4EEFF",
-        emoji: "🧩",
-        img: "/static/imges_recom/micros.png",
-        tags: [
-          { label: "Escalable", bg: "rgba(150,90,255,.2)", color: "#6637d1" },
-          { label: "Backend", bg: "rgba(0,160,255,.2)", color: "#005f99" }
-        ],
-        consejo: "Tu perfil encaja con sistemas modernos y distribuidos. Microservicios permite construir plataformas altamente escalables."
-      },
-
-      "QA Testing": {
-        avatarBg: "#EEFDF7",
-        emoji: "🧪",
-        img: "/static/imges_recom/testing.png",
-        tags: [
-          { label: "Calidad", bg: "rgba(0,200,140,.2)", color: "#00684b" },
-          { label: "Detalle", bg: "rgba(80,160,255,.2)", color: "#005fa0" }
-        ],
-        consejo: "Eres detallista y analítico. QA Testing es ideal para garantizar calidad y detectar errores antes de producción."
-      },
-
-      "Automatización QA": {
-        avatarBg: "#EEF7FF",
-        emoji: "⚙️",
-        img: "/static/imges_recom/automatizacion.png",
-        tags: [
-          { label: "Automatización", bg: "rgba(70,140,255,.2)", color: "#0052a3" },
-          { label: "Testing", bg: "rgba(0,190,140,.2)", color: "#006a4d" }
-        ],
-        consejo: "Combinas lógica y optimización. Automatización QA permite crear procesos eficientes para validar software."
-      },
-
-      "Gestión TI": {
-        avatarBg: "#FFF3EA",
-        emoji: "💼",
-        img: "/static/imges_recom/mana.png",
-        tags: [
-          { label: "Gestión", bg: "rgba(255,140,0,.2)", color: "#944e00" },
-          { label: "Liderazgo", bg: "rgba(255,80,80,.2)", color: "#9b2c2c" }
-        ],
-        consejo: "Tu perfil muestra habilidades organizativas y estratégicas. Gestión TI conecta negocio, tecnología y liderazgo."
-      },
-
-      "Product Owner": {
-        avatarBg: "#FFF7EA",
-        emoji: "🏁",
-        img: "/static/imges_recom/product.png",
-        tags: [
-          { label: "Producto", bg: "rgba(255,180,0,.2)", color: "#9c6800" },
-          { label: "Agilidad", bg: "rgba(80,170,255,.2)", color: "#005f9e" }
-        ],
-        consejo: "Tienes capacidad para entender usuarios y priorizar objetivos. Product Owner mezcla estrategia y gestión ágil."
-      },
-
-      "Blockchain": {
-        avatarBg: "#F3EEFF",
-        emoji: "⛓️",
-        img: "/static/imges_recom/block.png",
-        tags: [
-          { label: "Innovación", bg: "rgba(120,80,255,.2)", color: "#5f37d0" },
-          { label: "Descentralización", bg: "rgba(0,180,255,.2)", color: "#006a96" }
-        ],
-        consejo: "Te atraen las tecnologías disruptivas y sistemas seguros. Blockchain tiene gran potencial en múltiples industrias."
-      },
-
-      "IoT": {
-        avatarBg: "#FFFBEA",
-        emoji: "💡",
-        img: "/static/imges_recom/iot.png",
-        tags: [
-          { label: "Dispositivos", bg: "rgba(255,200,0,.2)", color: "#946800" },
-          { label: "Innovación", bg: "rgba(0,180,255,.2)", color: "#005e94" }
-        ],
-        consejo: "Tu interés por hardware y conectividad encaja con IoT. Es un área enfocada en automatización y dispositivos inteligentes."
-      },
-
-      "Realidad Virtual": {
-        avatarBg: "#F3F0FF",
-        emoji: "🥽",
-        img: "/static/imges_recom/realidad.png",
-        tags: [
-          { label: "Experiencias", bg: "rgba(140,90,255,.2)", color: "#5d37c7" },
-          { label: "Creatividad", bg: "rgba(255,120,180,.2)", color: "#9e2f61" }
-        ],
-        consejo: "Tienes afinidad por experiencias inmersivas y creatividad digital. Realidad Virtual combina innovación y diseño."
-      },
-
-      "UX/UI": {
-        avatarBg: "#EEFDF8",
-        emoji: "🖌️",
-        img: "/static/imges_recom/ui.png",
-        tags: [
-          { label: "Diseño", bg: "rgba(0,190,150,.2)", color: "#006d58" },
-          { label: "Experiencia", bg: "rgba(80,170,255,.2)", color: "#005d9c" }
-        ],
-        consejo: "Tu perfil destaca en creatividad y empatía con usuarios. UX/UI se enfoca en crear experiencias intuitivas y atractivas."
-      },
-
-      "Soporte Técnico": {
-        avatarBg: "#EEF8FF",
-        emoji: "🛠️",
-        img: "/static/imges_recom/soporte.png",
-        tags: [
-          { label: "Resolución", bg: "rgba(70,150,255,.2)", color: "#0059a0" },
-          { label: "Soporte", bg: "rgba(0,180,120,.2)", color: "#006d47" }
-        ],
-        consejo: "Tienes habilidades para resolver problemas prácticos y asistir usuarios. Soporte Técnico es una base sólida en tecnología."
-      },
-      "Gamer Developer": {
-        avatarBg: "#F3EEFF",
-        emoji: "🎮",
-        img: "/static/imges_recom/gamer.png",
-        tags: [
-          { label: "Creatividad", bg: "rgba(140,90,255,.2)", color: "#5d37c7" },
-          { label: "Entretenimiento", bg: "rgba(255,120,180,.2)", color: "#9e2f61" }
-        ],
-        consejo: "Tu perfil combina creatividad, lógica y diseño interactivo. Desarrollo de videojuegos puede permitirte construir experiencias inmersivas y dinámicas."
-      },
-      "Analista de Datos": {
-        avatarBg: "#EEF8FF",
-        emoji: "📈",
-        img: "/static/imges_recom/analista.png",
-        tags: [
-          { label: "Datos", bg: "rgba(70,170,255,.2)", color: "#005c96" },
-          { label: "Análisis", bg: "rgba(0,180,120,.2)", color: "#006d47" }
-        ],
-        consejo: "Tu perfil encaja con interpretación de información y toma de decisiones basadas en datos. Es una ruta accesible y con alta empleabilidad."
-      },
-
-      "Scrum Master": {
-        avatarBg: "#FFF6EA",
-        emoji: "📋",
-        img: "/static/imges_recom/scrum.png",
-        tags: [
-          { label: "Gestión Ágil", bg: "rgba(255,170,0,.2)", color: "#946400" },
-          { label: "Liderazgo", bg: "rgba(255,120,80,.2)", color: "#9b3f20" }
-        ],
-        consejo: "Tienes habilidades organizativas y de comunicación. Scrum Master conecta equipos, procesos ágiles y liderazgo tecnológico."
-      }
-    };
-
-    const DEFAULT_META = {
-      avatarBg: "#E3EBDC", emoji: "💻",
-      tags: [{ label: "Tecnología", bg: "rgba(194,201,181,0.3)", color: "#424939" }],
-      consejo: "Esta especialidad ofrece un camino único en el bosque del software. Explora sus ramas y descubre todo lo que tiene para ofrecerte."
-    };
-
-    const RANK_CONFIGS = [
-      { bg: "#7CB342", borderB: "#3C6A00", numColor: "#234100", cardBorder: "#3C6A00", barColor: "#3C6A00", scoreColor: "#3C6A00" },
-      { bg: "#DEE5D6", borderB: "#737A68", numColor: "#424939", cardBorder: "#E9F0E1", barColor: "#9F4122", scoreColor: "#9F4122" },
-      { bg: "#DEE5D6", borderB: "#737A68", numColor: "#424939", cardBorder: "#E9F0E1", barColor: "#424939", scoreColor: "#424939" },
-    ];
-
-    /* ─────────────────────────────────────────
-       UI helpers
-    ───────────────────────────────────────── */
-    function mostrarEstado(estado) {
-      ["vacio", "cargando", "resultados", "api-error"].forEach(s => {
-        const el = document.getElementById(`estado-${s}`);
-        if (!el) return;
-        if (s === estado) {
-          el.classList.remove("hidden");
-          if (["cargando", "api-error"].includes(s)) el.classList.add("flex");
-        } else {
-          el.classList.add("hidden");
-          el.classList.remove("flex");
-        }
-      });
-    }
-
-    // Toggle modalidad
-    document.querySelectorAll("input[name='modality']").forEach(radio => {
-      radio.addEventListener("change", () => {
-        const lblV = document.getElementById("lbl-virtual");
-        const lblP = document.getElementById("lbl-presencial");
-        if (radio.value === "0") {
-          lblV.className = lblV.className.replace("border-outline-variant text-on-surface-variant", "border-primary bg-primary-container/20 text-on-surface");
-          lblP.className = lblP.className.replace("border-primary bg-primary-container/20 text-on-surface", "border-outline-variant text-on-surface-variant");
-        } else {
-          lblP.className = lblP.className.replace("border-outline-variant text-on-surface-variant", "border-primary bg-primary-container/20 text-on-surface");
-          lblV.className = lblV.className.replace("border-primary bg-primary-container/20 text-on-surface", "border-outline-variant text-on-surface-variant");
-        }
-      });
-    });
-
-    /* ─────────────────────────────────────────
-       Llamada al backend Flask
-    ───────────────────────────────────────── */
-    async function ejecutarModelo() {
-      const demanda = document.getElementById("sel-demanda").value;
-      const costo = document.getElementById("sel-costo").value;
-      const salario = document.getElementById("sel-salario").value;
-      const dificultad = document.getElementById("sel-dificultad").value;
-      const modalidad = document.querySelector("input[name='modality']:checked").value;
-
-      // Validar
-      const formError = document.getElementById("form-error");
-      if (!demanda || !costo || !salario || !dificultad) {
-        formError.classList.remove("hidden");
-        return;
-      }
-      formError.classList.add("hidden");
-
-      const btn = document.getElementById("btn-ejecutar");
-      btn.disabled = true;
-      mostrarEstado("cargando");
-
-      try {
-        const res = await fetch("/api/recomendar", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ demanda, costo, salario, dificultad, modalidad })
-        });
-
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-
-        // Badge de modelo
-        const badge = document.getElementById("badge-modelo");
-        const badgeTexto = document.getElementById("badge-texto");
-        badge.classList.remove("hidden");
-        badge.classList.add("flex");
-        badgeTexto.textContent = data.modelo_activo ? "Modelo sklearn activo" : "Modo demostración";
-
-        renderResultados(data.top3);
-        mostrarEstado("resultados");
-
-      } catch (err) {
-        console.error(err);
-        mostrarEstado("api-error");
-      } finally {
-        btn.disabled = false;
-      }
-    }
-
-    /* ─────────────────────────────────────────
-       Render de cards
-    ───────────────────────────────────────── */
-    function renderResultados(top3) {
-      const container = document.getElementById("cards-container");
-      container.innerHTML = "";
-
-      top3.forEach((r, i) => {
-        const cfg = RANK_CONFIGS[i];
-        const meta = META[r.nombre] || DEFAULT_META;
-
-        const avatarHTML = meta.img
-          ? `<img src="${meta.img}" class="w-full h-full object-cover" alt="${r.nombre}"
-             onerror="this.style.display='none';this.parentElement.innerHTML='<span style=font-size:2.2rem;line-height:80px;text-align:center;display:block>${meta.emoji}</span>'">`
-          : `<span style="font-size:2.2rem;line-height:80px;text-align:center;display:block">${meta.emoji}</span>`;
-
-        const tagsHTML = (meta.tags || []).map(t =>
-          `<span style="background:${t.bg};color:${t.color}"
-             class="px-3 py-0.5 text-xs font-bold rounded-full">${t.label}</span>`
-        ).join("");
-
-        const razonHTML = `<p class="text-xs text-on-surface-variant mt-2 leading-relaxed">
-      → ${r.razones.join(" · ")}</p>`;
-
-        const dims = ["demanda", "salario", "dificultad"];
-        const barras = dims.map(dim => {
-          const val = Math.round((r.compat[dim] / 10) * 100);
-          return `
-        <div class="flex items-center gap-2" style="font-size:11px;">
-          <span class="text-on-surface-variant capitalize shrink-0" style="width:60px">${dim}</span>
-          <div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
-            <div class="h-full rounded-full" style="width:${val}%;background:${cfg.barColor}"></div>
+        <div class="flex items-center gap-3">
+          <div
+            class="w-12 h-12 rounded-2xl bg-primary-container/30 flex items-center justify-center text-2xl shadow-sm">
+            🌲
           </div>
-          <span class="font-bold text-right" style="color:${cfg.barColor};width:28px">${val}%</span>
-        </div>`;
-        }).join("");
 
-        const card = document.createElement("div");
-        card.className = "result-card";
-        card.innerHTML = `
-      <div class="relative flex items-center gap-4 group">
-        <div style="background:${cfg.bg};border-bottom:4px solid ${cfg.borderB}"
-          class="w-14 h-14 flex items-center justify-center rounded-2xl shadow-sm shrink-0 group-hover:scale-110 transition-transform">
-          <span style="color:${cfg.numColor};font-family:Quicksand;font-weight:700;font-size:20px">${i + 1}</span>
+          <div>
+            <h2 class="text-primary" style="font-family:Quicksand;font-size:24px;font-weight:700;">
+              Guía Rápida
+            </h2>
+
+            <p class="text-on-surface-variant text-xs">
+              Recomendador Inteligente de Especializaciones
+            </p>
+          </div>
         </div>
-        <div style="border:2px solid ${cfg.cardBorder}"
-          class="flex-1 bg-surface-container-lowest p-5 rounded-lg shadow-sm relative overflow-hidden">
-          <div class="flex items-center justify-between gap-4">
-            <div class="flex items-center gap-4">
-              <div style="background:${meta.avatarBg}" class="w-20 h-20 rounded-xl overflow-hidden shrink-0 flex items-center justify-center">
-                ${avatarHTML}
+
+        <button onclick="cerrarModalBienvenida()"
+          class="w-9 h-9 rounded-full bg-surface-container hover:scale-105 transition flex items-center justify-center text-on-surface-variant">
+          ✕
+        </button>
+      </div>
+
+      <!-- PASOS -->
+      <div class="relative z-10">
+
+        <!-- PASO 1 -->
+        <div class="tutorial-step" data-step="0">
+
+          <div class="bg-primary-container/10 border border-primary/10 rounded-xl p-4 mb-4">
+            <h3 class="font-bold text-primary mb-3" style="font-family:Lexend;font-size:12px;letter-spacing:.08em;">
+              ¿QUÉ HACE ESTE PROYECTO?
+            </h3>
+
+            <p class="text-on-surface-variant text-sm leading-relaxed">
+              Este sistema utiliza un modelo de recomendación para analizar tus
+              preferencias y calcular qué especialización tecnológica encaja mejor contigo.
+              <br><br>
+              El modelo compara factores académicos y laborales para generar
+              un ranking personalizado de áreas como IA, Ciberseguridad,
+              Backend, UX/UI, Data Science y muchas más.
+            </p>
+          </div>
+
+          <div class="bg-tertiary-container/10 border border-tertiary/10 rounded-xl p-4">
+            <h3 class="font-bold text-tertiary mb-3" style="font-family:Lexend;font-size:12px;letter-spacing:.08em;">
+              ¿CÓMO FUNCIONA?
+            </h3>
+
+            <div class="space-y-3 text-sm text-on-surface-variant">
+
+              <div class="flex gap-3">
+                <div
+                  class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center text-[11px] font-bold shrink-0">
+                  1
+                </div>
+                <p>Configuras tus preferencias usando los sliders.</p>
               </div>
-              <div>
-                <h4 style="color:${cfg.scoreColor};font-family:Quicksand;font-weight:600;font-size:19px" class="mb-1">${r.nombre}</h4>
-                <div class="flex flex-wrap gap-1.5 mb-0.5">${tagsHTML}</div>
-                ${razonHTML}
+
+              <div class="flex gap-3">
+                <div
+                  class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center text-[11px] font-bold shrink-0">
+                  2
+                </div>
+                <p>El sistema analiza compatibilidades entre especializaciones.</p>
               </div>
-            </div>
-            <div class="text-right shrink-0">
-              <div style="color:${cfg.scoreColor};font-family:Lexend;font-weight:700;font-size:34px;line-height:1">${r.pct}%</div>
-              <p class="text-xs text-on-surface-variant font-bold mt-1">Match</p>
+
+              <div class="flex gap-3">
+                <div
+                  class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center text-[11px] font-bold shrink-0">
+                  3
+                </div>
+                <p>Obtienes un ranking con tus mejores opciones.</p>
+              </div>
+
             </div>
           </div>
-          <div class="mt-4 pt-3 border-t border-surface-container space-y-1.5">${barras}</div>
-          ${i === 0 ? `<div style="background:${cfg.barColor}" class="absolute bottom-0 left-0 h-1 w-full rounded-b-lg"></div>` : ""}
-        </div>
-      </div>`;
-        container.appendChild(card);
-      });
 
-      // un consejo
-      const mejor = top3[0];
-      const mejorMeta = META[mejor.nombre] || DEFAULT_META;
-      document.getElementById("consejo-texto").innerHTML =
-        `<strong class="text-tertiary">Un consejo:</strong> ${mejorMeta.consejo}`;
-    }
-  </script>
+        </div>
+
+        <!-- PASO 2 -->
+        <div class="tutorial-step hidden" data-step="1">
+
+          <div class="bg-primary-container/10 border border-primary/10 rounded-xl p-4 mb-4">
+
+            <h3 class="font-bold text-primary mb-3" style="font-family:Lexend;font-size:12px;letter-spacing:.08em;">
+              NIVEL DE DEMANDA
+            </h3>
+
+            <p class="text-on-surface-variant text-sm leading-relaxed">
+              Representa qué tanto buscas una especialización con alta salida laboral.
+              <br><br>
+              <strong>0 - 3:</strong> no te importa mucho la demanda.<br>
+              <strong>4 - 7:</strong> buscas equilibrio.<br>
+              <strong>8 - 10:</strong> priorizas empleabilidad y oportunidades.
+            </p>
+
+          </div>
+
+          <div class="bg-tertiary-container/10 border border-tertiary/10 rounded-xl p-4">
+
+            <h3 class="font-bold text-tertiary mb-3" style="font-family:Lexend;font-size:12px;letter-spacing:.08em;">
+              COSTO DE FORMACIÓN
+            </h3>
+
+            <p class="text-on-surface-variant text-sm leading-relaxed">
+              Indica cuánto estás dispuesto a invertir en el aprendizaje,
+              en la especializacion.
+              <br><br>
+              <strong>0 - 3:</strong> prefieres opciones económicas.<br>
+              <strong>4 - 7:</strong> inversión moderada.<br>
+              <strong>8 - 10:</strong> estás dispuesto a invertir bastante.
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- PASO 3 -->
+        <div class="tutorial-step hidden" data-step="2">
+
+          <div class="bg-primary-container/10 border border-primary/10 rounded-xl p-4 mb-4">
+
+            <h3 class="font-bold text-primary mb-3" style="font-family:Lexend;font-size:12px;letter-spacing:.08em;">
+              EXPECTATIVA DE SALARIO
+            </h3>
+
+            <p class="text-on-surface-variant text-sm leading-relaxed">
+              Mide qué tan importante es para ti alcanzar salarios altos.
+              <br><br>
+              <strong>0 - 3:</strong> el salario no es prioridad.<br>
+              <strong>4 - 7:</strong> buscas estabilidad económica.<br>
+              <strong>8 - 10:</strong> priorizas áreas de alta remuneración.
+            </p>
+
+          </div>
+
+          <div class="bg-tertiary-container/10 border border-tertiary/10 rounded-xl p-4 mb-4">
+
+            <h3 class="font-bold text-tertiary mb-3" style="font-family:Lexend;font-size:12px;letter-spacing:.08em;">
+              DIFICULTAD ACADÉMICA
+            </h3>
+
+            <p class="text-on-surface-variant text-sm leading-relaxed">
+              Define cuánto reto técnico o matemático estás dispuesto a afrontar.
+              <br><br>
+              <strong>0 - 3:</strong> buscas algo más accesible.<br>
+              <strong>4 - 7:</strong> dificultad equilibrada.<br>
+              <strong>8 - 10:</strong> aceptas retos complejos y técnicos.
+            </p>
+
+          </div>
+
+        </div>
+
+        <!-- PASO 4 -->
+        <div class="tutorial-step hidden" data-step="3">
+
+          <div class="bg-primary-container/10 border border-primary/10 rounded-xl p-4 mb-4">
+
+            <h3 class="font-bold text-primary mb-3" style="font-family:Lexend;font-size:12px;letter-spacing:.08em;">
+              MODALIDAD
+            </h3>
+
+            <p class="text-on-surface-variant text-sm leading-relaxed">
+              Puedes elegir la forma en la que prefieres estudiar.
+              El modelo tendrá en cuenta esta preferencia
+              al momento de recomendar especializaciones.
+            </p>
+
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+
+            <!-- Virtual -->
+            <div class="bg-surface-container rounded-xl p-4 border border-outline-variant">
+
+              <div class="text-2xl mb-2">💻</div>
+
+              <h4 class="font-bold text-on-surface mb-2" style="font-family:Quicksand;">
+                Virtual
+              </h4>
+
+              <p class="text-xs text-on-surface-variant leading-relaxed">
+                Ideal si buscas flexibilidad,
+                estudiar desde casa y administrar tu tiempo.
+              </p>
+
+            </div>
+
+            <!-- Presencial -->
+            <div class="bg-surface-container rounded-xl p-4 border border-outline-variant">
+
+              <div class="text-2xl mb-2">🏫</div>
+
+              <h4 class="font-bold text-on-surface mb-2" style="font-family:Quicksand;">
+                Presencial
+              </h4>
+
+              <p class="text-xs text-on-surface-variant leading-relaxed">
+                Ideal si prefieres interacción directa,
+                trabajo en grupo y aprendizaje guiado.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- PASO 5 -->
+        <div class="tutorial-step hidden" data-step="4">
+
+          <div class="bg-primary-container/10 border border-primary/10 rounded-xl p-5 text-center">
+
+            <div class="text-5xl mb-4">🪄</div>
+
+            <h3 class="text-primary mb-3" style="font-family:Quicksand;font-size:22px;font-weight:700;">
+              ¡Todo listo!
+            </h3>
+
+            <p class="text-on-surface-variant text-sm leading-relaxed mb-5">
+              Cuando completes tus preferencias,
+              presiona <strong>“Ejecutar Modelo”</strong>
+              para iniciar el análisis.
+            </p>
+
+            <div class="space-y-3 text-left">
+
+              <div class="bg-surface-container rounded-xl p-3 flex gap-3 items-start">
+
+                <div
+                  class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center text-xs font-bold shrink-0">
+                  1
+                </div>
+
+                <p class="text-xs text-on-surface-variant leading-relaxed">
+                  El sistema analizará tus respuestas.
+                </p>
+
+              </div>
+
+              <div class="bg-surface-container rounded-xl p-3 flex gap-3 items-start">
+
+                <div
+                  class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center text-xs font-bold shrink-0">
+                  2
+                </div>
+
+                <p class="text-xs text-on-surface-variant leading-relaxed">
+                  Se calculará compatibilidad con múltiples especializaciones.
+                </p>
+
+              </div>
+
+              <div class="bg-surface-container rounded-xl p-3 flex gap-3 items-start">
+
+                <div
+                  class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center text-xs font-bold shrink-0">
+                  3
+                </div>
+
+                <p class="text-xs text-on-surface-variant leading-relaxed">
+                  Obtendrás un ranking con porcentaje de match,
+                  afinidad y recomendaciones.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- FOOTER -->
+        <div class="flex items-center justify-between mt-5">
+
+          <!-- Indicadores -->
+          <div class="flex gap-2">
+
+            <div class="step-dot w-2.5 h-2.5 rounded-full bg-primary"></div>
+            <div class="step-dot w-2.5 h-2.5 rounded-full bg-outline-variant"></div>
+            <div class="step-dot w-2.5 h-2.5 rounded-full bg-outline-variant"></div>
+            <div class="step-dot w-2.5 h-2.5 rounded-full bg-outline-variant"></div>
+            <div class="step-dot w-2.5 h-2.5 rounded-full bg-outline-variant"></div>
+
+          </div>
+
+          <!-- Botones -->
+          <div class="flex gap-2">
+
+            <button id="prev-btn" onclick="cambiarPaso(-1)"
+              class="hidden bg-surface-container text-on-surface px-4 h-10 rounded-full font-bold text-sm">
+              Atrás
+            </button>
+
+            <button id="next-btn" onclick="cambiarPaso(1)"
+              class="bg-primary text-on-primary px-5 h-10 rounded-full squish-btn flex items-center gap-2"
+              style="font-family:Quicksand;font-size:13px;font-weight:600;">
+
+              Siguiente
+
+              <span class="material-symbols-outlined" style='font-size:18px;'>
+                arrow_forward
+              </span>
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <script src="/static/data.js"></script>
+  <script src="/static/app.js"></script>
 </body>
 
 </html>
