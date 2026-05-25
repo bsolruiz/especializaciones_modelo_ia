@@ -114,5 +114,5 @@ def recomendar():
 
 if __name__ == "__main__":
     print("\nRecomendador de Especialidad")
-    print("   Abre http://localhost:5000 en tu navegador\n")
+    print("Abre http://localhost:5000 en tu navegador\n")
     app.run(debug=True, port=5000)

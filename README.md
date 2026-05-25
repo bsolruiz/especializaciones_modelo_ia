@@ -1,96 +1,88 @@
-# especializaciones_modelo_ia
-Proyecto Modelo de recomendación de especializaciones
+# 🌲 Growth Forest — Recomendador de Especialidades
 
-🧠 **Problema**
-Muchos estudiantes recién egresados de Ingeniería de Software no tienen una orientación clara para elegir una especialización, por lo que toman decisiones basadas en desinformación o presión externa.
+Sistema web con Machine Learning que recomienda al estudiante las 3 especialidades tecnológicas de la Ingenieria de Software que mejor se adaptan a su perfil, según sus preferencias.
 
-🎯 **Objetivo**
-El modelo busca predecir si una especialización es recomendable según tres datos ingresados por el usuario.
+---
 
-🤖 **¿Por qué utilizar la IA?**
-La IA ayuda a analizar factores importantes como demanda, interés y costos, para dar una recomendación más objetiva.
+## Problema que resolvimos
 
-📊 **Features**
-Demanda: qué tanto se solicita en el mercado (1–10)
-Gusto: qué tanto le interesa al estudiante (1–5)
-Costos: qué tan costosa es la especialización (1–10)
+Muchos estudiantes de tecnología no saben qué especialidad elegir entre las decenas disponibles. La orientación suele ser genérica. Quise que un modelo tomara sus preferencias reales y les devolviera una recomendación personalizada.
 
-💡 **¿Por qué estas features?**
-Porque combinan lo más importante al decidir:
-lo que me gusta, lo que tiene salida laboral y lo que puedo pagar.
+---
 
-🚀 **Primera entrega**
-Se realiza la primera entrega donde **permite clasificar si una especialización es recomendable o no, en función de variables como demanda, gusto del estudiante y costo**.
-En esta primera entrega se desarrolló un modelo básico de clasificación utilizando regresión logística. El modelo es entrenado con las features definidas (demanda, gusto y costos) y permite predecir si una especialización es recomendable o no para un nuevo estudiante.
+## Stack utilizado
 
-----------------------------------------------------------------------------------------------------------
+- **Backend:** Python + Flask
+- **ML:** scikit-learn, pandas, numpy
+- **Frontend:** HTML, Tailwind CSS, JavaScript vanilla
 
-**MODELO**
-🗂️ Plan de trabajo del proyecto 
-Este proyecto se desarrollará en 4 entregas progresivas, con el objetivo de evolucionar desde un modelo básico hasta un sistema de recomendación funcional basado en datos reales.
+---
+
+## Dataset
+
+Construido automaticamente. Cada fila representa una especialidad con 4 atributos en escala del 0 al 10:
 
 
-📊 Entrega 1 – Integración de datos reales
-Objetivo: incorporar información del mundo real al modelo.
-Actividades:
-Aumentar el dataset (más ejemplos simulados), construir un dataset en formato CSV
-Incluir nuevas variables 
-Leer datos con pandas
-Limpiar y preparar los datos
+ `demanda`  Qué tan demandada está en el mercado 
+ `costo`  Costo de formación estimado 
+ `salario`  Expectativa salarial 
+ `dificultad`  Exigencia académica 
+ `modalidad`  0 = virtual / 1 = presencial 
 
-🧠 Entrega 2 – Sistema de recomendación
-Objetivo: evolucionar de clasificador a recomendador.
-Actividades:
-Definir un conjunto de especializaciones
-Evaluar múltiples opciones en lugar de una sola
-Generar un ranking o top de recomendaciones
+**~5000 registros** generados con variaciones por especialidad. Split: 80% entrenamiento / 20% prueba.
 
-🌐 Entrega 3 – Interfaz y producto final
-Objetivo: hacer el sistema interactivo y presentable.
-Actividades:
-Crear una interfaz simple (ej: Streamlit)
-Permitir ingreso de datos por el usuario (Opcional)
+---
 
-🎯 Resultado final del proyecto
-Se espera desarrollar un sistema de recomendación que sugiera especializaciones adecuadas para estudiantes de Ingeniería de Software, utilizando variables como intereses, demanda del mercado y costos, apoyado en datos reales y técnicas de inteligencia artificial.
+## Modelos entrenados y métricas
 
+ Modelo  Accuracy 
+------
+ **Random Forest**  **91%** 
+ Decision Tree  82% 
+ KNN  78% 
 
-----------------------------------------------------------------------------------------------------------
+Se eligió **Random Forest** por ser el más preciso y por entregar probabilidades por clase, lo que permite construir el ranking de compatibilidad.
 
-**API + FRONT**
+---
 
-***Figma*** 
-https://www.figma.com/design/D4VWLDFSjG9H8GMs1fw1EG/Prototipo-de-Recomendador-de-Especializaci%C3%B3n?node-id=0-1&t=EhCiaJa7xZY6G6vV-1
+## Predicciones y cómo se usan
 
-++++
-***Semana del 11 al 15 de mayo*** 
-Objetivo: Diseño y Frontend. 
+El modelo recibe los 5 valores del usuario y devuelve una probabilidad por cada especialidad. Las 3 con mayor score se muestran como cards con:
 
-El trabajo consiste en crear el prototipo funcional en Figma, desarrollar la estructura de la aplicación en index.html con Tailwind CSS y programar la lógica de captura de datos en el formulario para que coincida con las variables del modelo.
+- Porcentaje de match
+- Barras de compatibilidad por atributo
+- Razones textuales y consejo personalizado
 
-***Semana del 18 al 22 de mayo*** 
-Objetivo: Backend e Integración. 
+---
 
-Las tareas incluyen la configuración del servidor en Flask, la implementación de la carga del modelo, el escalador y las columnas mediante joblib, y el desarrollo de las rutas en app.py para procesar los datos de entrada con pandas y generar las recomendaciones basadas en el archivo de especializaciones.
+## Frontend y Backend
 
-***Semana del 25 de mayo***
-Objetivo: Entrega Final.
+**`app.py`** expone un endpoint `POST /api/recomendar` que carga el modelo `.pkl`, predice y responde con JSON.
 
-Se llevarán a cabo las pruebas de integración para asegurar que el flujo de datos sea correcto, se realizará el pulido final de la interfaz de usuario, se completará la documentación técnica en el archivo README y se verificará que el archivo requirements.txt incluya todas las dependencias necesarias para la ejecución local.
+El frontend tiene 3 archivos estáticos:
+- `index.html` — estructura de la página
+- `styles.css` — estilos y animaciones
+- `data.js` — metadatos visuales de cada especialidad (imagen, colores, consejo)
+- `app.js` — lógica: llamada a la API y render de resultados
 
+---
 
-## Instalación
+## Cómo funciona la interfaz
 
-# Recomendador
+Al abrir la página aparece un **modal de bienvenida** que explica qué es el sistema, cómo usar los sliders y qué tipo de resultado va a ver. Puede reabrirse desde el botón **`?`** en el header.
 
-Sistema recomendador de especializaciones TI usando Flask + Machine Learning.
+El usuario mueve 4 sliders (demanda, costo, salario, dificultad), elige modalidad y presiona **Ejecutar Modelo**. El sistema responde con el ranking top 3 animado.
 
-## Instalación
+---
 
+## Correr el proyecto
+
+```bash
 pip install -r requirements.txt
-
-## Ejecutar
-
 py specializaciones.py
 py modelo.py  
 python app.py 
+# Abrir http://localhost:5000
+```
+
+> Si el modelo `.pkl` no existe, el sistema activa un modo demostración automáticamente.

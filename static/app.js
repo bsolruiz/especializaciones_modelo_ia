@@ -1,8 +1,5 @@
 /* app.js — Lógica del Recomendador de Especialidades */
 
-/* ─────────────────────────────────────────
-   UI helpers
-───────────────────────────────────────── */
 function mostrarEstado(estado) {
   ["vacio", "cargando", "resultados", "api-error"].forEach(s => {
     const el = document.getElementById(`estado-${s}`);

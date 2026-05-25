@@ -97,3 +97,7 @@ select.bubbly-input {
 .modal-label:hover {
   transform: scale(1.02);
 }
+
+.mx-auto{
+  margin-top: 18px;;
+}
